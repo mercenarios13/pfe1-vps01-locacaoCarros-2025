@@ -51,7 +51,3 @@ Se você deseja contribuir com este projeto, siga os passos abaixo:
 3. Faça as modificações desejadas e commit (`git commit -am 'Minha modificação'`).
 4. Envie a branch para o seu fork (`git push origin minha-modificacao`).
 5. Crie uma Pull Request explicando suas mudanças.
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
