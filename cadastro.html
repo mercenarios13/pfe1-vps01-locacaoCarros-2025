@@ -168,7 +168,7 @@
       { id: 9, modelo: "Compass Limited", marca: "Jeep", ano: 2022, imagem: "img/compass.jpg", valor_diaria: 270.00 },
       { id: 10, modelo: "Tracker Premier", marca: "Chevrolet", ano: 2023, imagem: "img/tracker.jpg", valor_diaria: 220.00 }
     ];
-  
+
     function exibirCarros() {
       const carrosContainer = document.getElementById('carros-container');
       carros.forEach(carro => {
@@ -185,11 +185,11 @@
         carrosContainer.appendChild(carroCard);
       });
     }
-  
+
     function selecionarCarro(id) {
       const carro = carros.find(carro => carro.id === id);
       localStorage.setItem("carroSelecionado", JSON.stringify(carro));
-  
+
       const carroSelecionadoInfo = document.getElementById("carroSelecionadoInfo");
       carroSelecionadoInfo.innerHTML = `
         <h3>Carro Selecionado:</h3>
@@ -199,45 +199,34 @@
         <p><strong>Ano:</strong> ${carro.ano}</p>
         <p><strong>Valor da Diária:</strong> R$ ${carro.valor_diaria.toFixed(2)}</p>
       `;
-  
+
       const formContainer = document.getElementById("formulario");
       formContainer.classList.remove("hidden");
     }
-  
+
     document.getElementById("formLocacao").onsubmit = function(event) {
       event.preventDefault();
-  
+
       const nome = document.getElementById("nome").value;
       const cpf = document.getElementById("cpf").value;
       const dias = document.getElementById("dias").value;
       const pagamento = document.getElementById("pagamento").value;
       
       const carro = JSON.parse(localStorage.getItem("carroSelecionado"));
-  
+
       const valorTotal = carro.valor_diaria * dias;
-  
+
       alert(`Locação realizada com sucesso! \nCarro: ${carro.modelo} \nValor Total: R$ ${valorTotal.toFixed(2)}`);
 
-      const voltarBtn = document.createElement("button");
-      voltarBtn.textContent = "Voltar para a tela inicial";
-      voltarBtn.style.backgroundColor = "#006699";
-      voltarBtn.style.color = "white";
-      voltarBtn.style.padding = "12px 20px";
-      voltarBtn.style.border = "none";
-      voltarBtn.style.borderRadius = "5px";
-      voltarBtn.style.cursor = "pointer";
-      voltarBtn.style.marginTop = "20px";
-      voltarBtn.addEventListener("click", function() {
-        window.location.href = "index.html";
-      });
-  
-      document.getElementById("formulario").appendChild(voltarBtn);
-  
+      window.location.href = "carro-alugado.html";
+
       document.getElementById("formLocacao").reset();
       document.getElementById("formulario").classList.add("hidden");
+
       localStorage.removeItem("carroSelecionado");
     };
-  
+
     window.onload = exibirCarros;
   </script>
-  
+</body>
+</html>
