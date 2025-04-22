@@ -25,7 +25,7 @@ A estrutura do projeto é composta pelos seguintes arquivos:
 1. Clone este repositório para o seu ambiente local:
 
     ```bash
-    git clone https://github.com/mercenarios/LocadoraDeCarros.git
+    git clone https://github.com/mercenarios13/pfe1-vps01-locacaoCarros-2025.git
     ```
 
 2. Navegue até o diretório do projeto:
