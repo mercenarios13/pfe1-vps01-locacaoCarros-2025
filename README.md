@@ -145,10 +145,10 @@ Desenvolver as funcionalidades conforme requisitos
 ### Locação de carros:
 
 1. Lista de carros:
-![Lista](https://github.com/luisfernandospoljaric/pfe1-vps01-sistemBiblioteca-2025/blob/main/lista.png)
+![Lista](https://github.com/luisfernandospoljaric/pfe1-vps01-locacaoCarros-2025/blob/main/lista.png)
 
 2. Modal:
-![Modal](https://github.com/luisfernandospoljaric/pfe1-vps01-sistemBiblioteca-2025/blob/main/modal.png)
+![Modal](https://github.com/luisfernandospoljaric/pfe1-vps01-locacaoCarros-2025/blob/main/modal.png)
 
 3. Cadastro:
-![Cadastro](https://github.com/luisfernandospoljaric/pfe1-vps01-sistemBiblioteca-2025/blob/main/cadastro.png)
+![Cadastro](https://github.com/luisfernandospoljaric/pfe1-vps01-locacaoCarros-2025/blob/main/cadastro.png)
