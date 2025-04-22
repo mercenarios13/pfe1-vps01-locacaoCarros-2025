@@ -10,7 +10,7 @@ Desenvolver as funcionalidades conforme requisitos
 
 ## Configurações
 - Fonte: Roboto (google fonts)
-- Paletta de cores Azuis do escuro para o claro
+- Paletta de cores
 
 - [ ] cor1: #003366 
 - [ ] cor2: #006699
