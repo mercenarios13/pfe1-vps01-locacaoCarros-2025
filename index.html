@@ -26,197 +26,60 @@
       font-size: 2.5em;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 10px;
-      font-size: 1.2em;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
     main {
       display: flex;
       justify-content: center;
+      align-items: center;
+      height: 70vh;
       padding: 20px;
     }
 
-    #carros-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      width: 80%;
-    }
-
-    .carro-card {
+    .mensagem-bem-vindo {
+      text-align: center;
+      font-size: 1.8em;
+      color: #003366;
+      padding: 20px;
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease;
-      text-align: center;
     }
 
-    .carro-card:hover {
-      transform: scale(1.05);
-    }
-
-    .carro-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto; /* Centraliza a imagem */
-    }
-
-    .carro-card .info {
-      padding: 15px;
-    }
-
-    .carro-card .info h3 {
+    .mensagem-bem-vindo p {
       margin: 0;
       font-size: 1.2em;
-      color: #003366;
-    }
-
-    .carro-card .info p {
-      font-size: 1em;
       color: #555;
-      margin: 10px 0;
     }
 
-    .carro-card .info button {
+    .btn-alugar {
       background-color: #006699;
       color: white;
-      padding: 10px 15px;
+      padding: 12px 20px;
+      font-size: 1.2em;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
+      margin-top: 20px;
     }
 
-    .carro-card .info button:hover {
+    .btn-alugar:hover {
       background-color: #00CCFF;
-    }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 500px;
-      width: 90%;
-    }
-
-    #fecharModal {
-      font-size: 2em;
-      color: #003366;
-      cursor: pointer;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-
-    #fecharModal:hover {
-      color: #00CCFF;
-    }
-
-    .hidden {
-      display: none;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Locadora de Carros</h1>
-    <nav>
-      <a href="cadastro.html">Alugar carro</a>
-    </nav>
   </header>
 
   <main>
-    <section id="carros-container">
-      <!-- Carros serão carregados dinamicamente aqui -->
-    </section>
-  </main>
-
-  <!-- Modal -->
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <span id="fecharModal">&times;</span>
-      <div id="detalhes-carro"></div>
+    <div class="mensagem-bem-vindo">
+      <h2>Bem-vindo à nossa locadora de carros!</h2>
+      <p>Confira nossos veículos e escolha o seu para uma experiência única!</p>
+      <a href="cadastro.html">
+        <button class="btn-alugar">Alugar um Carro</button>
+      </a>
     </div>
-  </div>
-
-  <script>
-    // Dados dos carros
-    const carros = [
-      { id: 1, modelo: "Onix LT 1.0", marca: "Chevrolet", ano: 2022, imagem: "img/onix.jpg", valor_diaria: 120.00 },
-      { id: 2, modelo: "HB20 Vision", marca: "Hyundai", ano: 2023, imagem: "img/HB20.jpg", valor_diaria: 150.00 },
-      { id: 3, modelo: "Renegade Longitude", marca: "Jeep", ano: 2023, imagem: "img/Renegade.jpg", valor_diaria: 210.00 },
-      { id: 4, modelo: "Corolla XEi", marca: "Toyota", ano: 2022, imagem: "img/corolla.jpg", valor_diaria: 250.00 },
-      { id: 5, modelo: "Civic Touring", marca: "Honda", ano: 2021, imagem: "img/civic.jpg", valor_diaria: 230.00 },
-      { id: 6, modelo: "Fiat Mobi Like", marca: "Fiat", ano: 2022, imagem: "img/mobi.jpg", valor_diaria: 90.00 },
-      { id: 7, modelo: "Kwid Zen", marca: "Renault", ano: 2023, imagem: "img/kwid.jpg", valor_diaria: 95.00 },
-      { id: 8, modelo: "Gol Trendline", marca: "Volkswagen", ano: 2021, imagem: "img/gol.jpg", valor_diaria: 100.00 },
-      { id: 9, modelo: "Compass Limited", marca: "Jeep", ano: 2022, imagem: "img/compass.jpg", valor_diaria: 270.00 },
-      { id: 10, modelo: "Tracker Premier", marca: "Chevrolet", ano: 2023, imagem: "img/tracker.jpg", valor_diaria: 220.00 }
-    ];
-
-    // Função para exibir os carros
-    function exibirCarros() {
-      const carrosContainer = document.getElementById('carros-container');
-      carros.forEach(carro => {
-        const carroCard = document.createElement('div');
-        carroCard.classList.add('carro-card');
-        carroCard.innerHTML = `
-          <img src="${carro.imagem}" alt="${carro.modelo}">
-          <div class="info">
-            <h3>${carro.modelo} (${carro.marca} - ${carro.ano})</h3>
-            <p>Diária: R$ ${carro.valor_diaria.toFixed(2)}</p>
-            <button onclick="mostrarDetalhes(${carro.id})">Ver Detalhes</button>
-          </div>
-        `;
-        carrosContainer.appendChild(carroCard);
-      });
-    }
-
-    // Função para mostrar detalhes do carro
-    function mostrarDetalhes(id) {
-      const carro = carros.find(carro => carro.id === id);
-      const modal = document.getElementById('modal');
-      const detalhesCarro = document.getElementById('detalhes-carro');
-      detalhesCarro.innerHTML = `
-        <h2>${carro.modelo}</h2>
-        <img src="${carro.imagem}" alt="${carro.modelo}" style="width: 100%; height: 300px; object-fit: cover;">
-        <p><strong>Marca:</strong> ${carro.marca}</p>
-        <p><strong>Ano:</strong> ${carro.ano}</p>
-        <p><strong>Valor da Diária:</strong> R$ ${carro.valor_diaria.toFixed(2)}</p>
-      `;
-      modal.classList.remove('hidden');
-    }
-
-    // Fechar o modal
-    document.getElementById('fecharModal').addEventListener('click', () => {
-      document.getElementById('modal').classList.add('hidden');
-    });
-
-    // Exibir os carros quando a página carregar
-    window.onload = exibirCarros;
-  </script>
+  </main>
 </body>
 </html>
