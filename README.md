@@ -9,7 +9,7 @@ Você foi contratado por uma empresa de aluguel de veículos que deseja oferecer
 Desenvolver as funcionalidades conforme requisitos
 
 ## Configurações
-- Fonte: Roboto (google fonts)
+- Fonte: Courrier
 - Paletta de cores
 
 - [ ] cor1: #003366 
