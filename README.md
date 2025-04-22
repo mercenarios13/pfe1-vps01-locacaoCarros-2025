@@ -8,6 +8,18 @@ Você foi contratado por uma empresa de aluguel de veículos que deseja oferecer
 ## Desafio
 Desenvolver as funcionalidades conforme requisitos
 
+## Configurações
+- Fonte: Roboto (google fonts)
+- Paletta de cores Azuis do escuro para o claro
+
+- [ ] cor1: #003366 
+- [ ] cor2: #006699
+- [ ] cor3: #0099CC
+- [ ] cor4: #00CCFF
+- [ ] cor5: #99DDFF
+- [ ] transp1: rgba(0, 0, 0, 0.8)
+- [ ] transp2: rgba(255, 255, 255, 0.8)
+
 ### Requisitos funcionais
 - [RF001] O sistema deve apresentar todos os carros disponíveis para locação..
     - [RF001.1] Deve possuir um botão "Ver Detalhes" para apresentar os detalhes de cada carro.
@@ -145,10 +157,10 @@ Desenvolver as funcionalidades conforme requisitos
 ### Locação de carros:
 
 1. Lista de carros:
-![Lista](https://github.com/luisfernandospoljaric/pfe1-vps01-locacaoCarros-2025/blob/main/lista.png)
+![Lista](./assets/lista.png)
 
 2. Modal:
-![Modal](https://github.com/luisfernandospoljaric/pfe1-vps01-locacaoCarros-2025/blob/main/modal.png)
+![Modal](./assets/modal.png)
 
 3. Cadastro:
-![Cadastro](https://github.com/luisfernandospoljaric/pfe1-vps01-locacaoCarros-2025/blob/main/cadastro.png)
+![Cadastro](./assets/cadastro.png)
