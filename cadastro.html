@@ -168,7 +168,6 @@
 <body>
   <header>
     <h1>Cadastro de Locação</h1>
-    <!-- Botão de Voltar para a Página Inicial ao lado do título -->
     <button id="voltarButton" onclick="window.location.href='index.html'">Voltar para Página Inicial</button>
   </header>
 
@@ -199,7 +198,6 @@
     </form>
   </div>
 
-  <!-- Lista de Carros Cadastrados -->
   <div class="carros-lista" id="listaCarros">
     <h2>Carros Cadastrados</h2>
     <table id="tabelaCarros">
@@ -214,7 +212,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Aqui vão aparecer os carros cadastrados -->
       </tbody>
     </table>
   </div>
@@ -233,14 +230,12 @@
       { modelo: "Tracker Premier", marca: "Chevrolet", ano: 2023, imagem: "img/tracker.jpg", valor_diaria: 220.00 }
     ];
 
-    let idCounter = 1; // Variável para manter o contador de ID
+    let idCounter = 1;
 
-    // Gerar ID sequencial para carros
     function gerarId() {
-      return idCounter++; // Começa de 1 e vai incrementando
+      return idCounter++;
     }
 
-    // Exibir todos os carros no grid
     function exibirCarros() {
       const carrosContainer = document.getElementById('carros-container');
       carros.forEach((carro, index) => {
@@ -276,7 +271,6 @@
       formContainer.classList.remove("hidden");
     }
 
-    // Adicionar carro à lista de cadastrados
     function adicionarCarroNaLista(carro, nomeCliente) {
       const carroComId = { id: gerarId(), ...carro, nomeCliente };
       const tabelaCarros = document.getElementById('tabelaCarros').getElementsByTagName('tbody')[0];
@@ -291,7 +285,6 @@
       `;
     }
 
-    // Finalizar locação e adicionar carro à lista
     document.getElementById("formLocacao").onsubmit = function(event) {
       event.preventDefault();
 
@@ -306,7 +299,6 @@
 
       alert(`Locação realizada com sucesso! \nCarro: ${carro.modelo} \nValor Total: R$ ${valorTotal.toFixed(2)}`);
 
-      // Adicionando o carro à lista de cadastrados com o nome do cliente
       adicionarCarroNaLista(carro, nome);
 
       document.getElementById("formLocacao").reset();
