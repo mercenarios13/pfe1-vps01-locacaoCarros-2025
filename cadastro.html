@@ -19,6 +19,9 @@
       color: white;
       text-align: center;
       padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     header h1 {
@@ -121,11 +124,52 @@
     .hidden {
       display: none;
     }
+
+    .carros-lista {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .carros-lista table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .carros-lista th, .carros-lista td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .carros-lista th {
+      background-color: #003366;
+      color: white;
+    }
+
+    #voltarButton {
+      background-color: #003366;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #voltarButton:hover {
+      background-color: #00CCFF;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Cadastro de Locação</h1>
+    <!-- Botão de Voltar para a Página Inicial ao lado do título -->
+    <button id="voltarButton" onclick="window.location.href='index.html'">Voltar para Página Inicial</button>
   </header>
 
   <section id="carros-container"></section>
@@ -155,23 +199,51 @@
     </form>
   </div>
 
+  <!-- Lista de Carros Cadastrados -->
+  <div class="carros-lista" id="listaCarros">
+    <h2>Carros Cadastrados</h2>
+    <table id="tabelaCarros">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Modelo</th>
+          <th>Marca</th>
+          <th>Ano</th>
+          <th>Valor Diária</th>
+          <th>Cliente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aqui vão aparecer os carros cadastrados -->
+      </tbody>
+    </table>
+  </div>
+
   <script>
     const carros = [
-      { id: 1, modelo: "Onix LT 1.0", marca: "Chevrolet", ano: 2022, imagem: "img/onix.jpg", valor_diaria: 120.00 },
-      { id: 2, modelo: "HB20 Vision", marca: "Hyundai", ano: 2023, imagem: "img/HB20.jpg", valor_diaria: 150.00 },
-      { id: 3, modelo: "Renegade Longitude", marca: "Jeep", ano: 2023, imagem: "img/Renegade.jpg", valor_diaria: 210.00 },
-      { id: 4, modelo: "Corolla XEi", marca: "Toyota", ano: 2022, imagem: "img/corolla.jpg", valor_diaria: 250.00 },
-      { id: 5, modelo: "Civic Touring", marca: "Honda", ano: 2021, imagem: "img/civic.jpg", valor_diaria: 230.00 },
-      { id: 6, modelo: "Fiat Mobi Like", marca: "Fiat", ano: 2022, imagem: "img/mobi.jpg", valor_diaria: 90.00 },
-      { id: 7, modelo: "Kwid Zen", marca: "Renault", ano: 2023, imagem: "img/kwid.jpg", valor_diaria: 95.00 },
-      { id: 8, modelo: "Gol Trendline", marca: "Volkswagen", ano: 2021, imagem: "img/gol.jpg", valor_diaria: 100.00 },
-      { id: 9, modelo: "Compass Limited", marca: "Jeep", ano: 2022, imagem: "img/compass.jpg", valor_diaria: 270.00 },
-      { id: 10, modelo: "Tracker Premier", marca: "Chevrolet", ano: 2023, imagem: "img/tracker.jpg", valor_diaria: 220.00 }
+      { modelo: "Onix LT 1.0", marca: "Chevrolet", ano: 2022, imagem: "img/onix.jpg", valor_diaria: 120.00 },
+      { modelo: "HB20 Vision", marca: "Hyundai", ano: 2023, imagem: "img/HB20.jpg", valor_diaria: 150.00 },
+      { modelo: "Renegade Longitude", marca: "Jeep", ano: 2023, imagem: "img/Renegade.jpg", valor_diaria: 210.00 },
+      { modelo: "Corolla XEi", marca: "Toyota", ano: 2022, imagem: "img/corolla.jpg", valor_diaria: 250.00 },
+      { modelo: "Civic Touring", marca: "Honda", ano: 2021, imagem: "img/civic.jpg", valor_diaria: 230.00 },
+      { modelo: "Fiat Mobi Like", marca: "Fiat", ano: 2022, imagem: "img/mobi.jpg", valor_diaria: 90.00 },
+      { modelo: "Kwid Zen", marca: "Renault", ano: 2023, imagem: "img/kwid.jpg", valor_diaria: 95.00 },
+      { modelo: "Gol Trendline", marca: "Volkswagen", ano: 2021, imagem: "img/gol.jpg", valor_diaria: 100.00 },
+      { modelo: "Compass Limited", marca: "Jeep", ano: 2022, imagem: "img/compass.jpg", valor_diaria: 270.00 },
+      { modelo: "Tracker Premier", marca: "Chevrolet", ano: 2023, imagem: "img/tracker.jpg", valor_diaria: 220.00 }
     ];
 
+    let idCounter = 1; // Variável para manter o contador de ID
+
+    // Gerar ID sequencial para carros
+    function gerarId() {
+      return idCounter++; // Começa de 1 e vai incrementando
+    }
+
+    // Exibir todos os carros no grid
     function exibirCarros() {
       const carrosContainer = document.getElementById('carros-container');
-      carros.forEach(carro => {
+      carros.forEach((carro, index) => {
         const carroCard = document.createElement('div');
         carroCard.classList.add('carro-card');
         carroCard.innerHTML = `
@@ -179,15 +251,15 @@
           <div class="info">
             <h3>${carro.modelo} (${carro.marca} - ${carro.ano})</h3>
             <p>Diária: R$ ${carro.valor_diaria.toFixed(2)}</p>
-            <button onclick="selecionarCarro(${carro.id})">Selecionar Carro</button>
+            <button onclick="selecionarCarro(${index})">Selecionar Carro</button>
           </div>
         `;
         carrosContainer.appendChild(carroCard);
       });
     }
 
-    function selecionarCarro(id) {
-      const carro = carros.find(carro => carro.id === id);
+    function selecionarCarro(index) {
+      const carro = carros[index];
       localStorage.setItem("carroSelecionado", JSON.stringify(carro));
 
       const carroSelecionadoInfo = document.getElementById("carroSelecionadoInfo");
@@ -204,6 +276,22 @@
       formContainer.classList.remove("hidden");
     }
 
+    // Adicionar carro à lista de cadastrados
+    function adicionarCarroNaLista(carro, nomeCliente) {
+      const carroComId = { id: gerarId(), ...carro, nomeCliente };
+      const tabelaCarros = document.getElementById('tabelaCarros').getElementsByTagName('tbody')[0];
+      const row = tabelaCarros.insertRow();
+      row.innerHTML = `
+        <td>${carroComId.id}</td>
+        <td>${carroComId.modelo}</td>
+        <td>${carroComId.marca}</td>
+        <td>${carroComId.ano}</td>
+        <td>R$ ${carroComId.valor_diaria.toFixed(2)}</td>
+        <td>${carroComId.nomeCliente}</td>
+      `;
+    }
+
+    // Finalizar locação e adicionar carro à lista
     document.getElementById("formLocacao").onsubmit = function(event) {
       event.preventDefault();
 
@@ -218,7 +306,8 @@
 
       alert(`Locação realizada com sucesso! \nCarro: ${carro.modelo} \nValor Total: R$ ${valorTotal.toFixed(2)}`);
 
-      window.location.href = "carro-alugado.html";
+      // Adicionando o carro à lista de cadastrados com o nome do cliente
+      adicionarCarroNaLista(carro, nome);
 
       document.getElementById("formLocacao").reset();
       document.getElementById("formulario").classList.add("hidden");
